@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/task_works_8_2.css">
+  <title>JavaScriptの学習</title>
+</head>
+<body>
+  <p>課題8-2：画像リサイズ機能機能</p>
+  <div class="instruction" style="text-align:center;">画像リサイズ</div>
+  <div class="input_area">
+    <p style="margin: 10px 10px 0px 0px;"><label for="image">画像読み込み：</label></p>
+    <input type="file" id="fileInput" accept="image/*" name="image">
+  </div>
+  <div class="imageArea">
+    <div class="defaultImage">
+      <div id="preview">読み込んだ画像の表示場所</div>
+    </div>
+  </div>
+  <p style="text-align: center; margin-bottom: auto;">読み込んだ画像のサイズ：</p>
+  <div class="defaultImageSize">
+    <p>
+      <label for="defaultHeight">高さ：</label><br>
+      <input type="number" id="defaultHeightInput" size="120" disabled>
+    </p>
+    <p><br>×</p>
+    <p>
+      <label for="defaultWidth">横幅：</label><br>
+      <input type="number" id="defaultWidthInput" size="120" disabled>ピクセル
+    </p>
+  </div>
+  <p style="text-align: center; margin-bottom: auto;">変更後の画像のサイズ：</p>
+  <div class="resizeImageInput">
+    <p>
+      <label for="resize_height">高さ：</label><br>
+      <input type="number" id="resizeHeightInput" size="120">
+    </p>
+    <p><br>×</p>
+    <p>
+      <label for="resize_width">横幅：</label><br>
+      <input type="number" id="resizeWidthInput" size="120">ピクセル
+    </p>
+  </div>
+  <div class="input_area">
+    <input type="button" id="resize" value="画像リサイズ"><br>
+    <p><label>リサイズ後の画像：</label></p>
+  </div>
+  <div class="resizeImageArea">
+    <div class="resizeImage">
+      <canvas id="canvas" width="0" height="0"></canvas>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/task_works_8_2.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../Public/css/user_form.css">
+  <title>画像保存機能</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div style="text-align:center;">画像保存</div>
+    <form enctype="multipart/form-data" action="../Controllers/image_controller.php" method="POST">
+      <div class="input_area">
+        <p style="margin: 10px 10px 0px 0px;"><label for="image">画像1：</label></p>
+        <input type="file" id="fileInput_1" accept="image/*" name="image_1">
+      </div>
+      <div class="defaultImage" id="previewSpace_1">
+        <div id="preview_1">ここに画像1が表示されます</div>
+      </div>
+      <div class="input_area">
+        <p style="margin: 10px 10px 0px 0px;"><label for="image">画像2：</label></p>
+        <input type="file" id="fileInput_2" accept="image/*" name="image_2">
+      </div>
+      <div class="defaultImage" id="previewSpace_2">
+        <div id="preview_2">ここに画像2が表示されます</div>
+      </div>
+      <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+      <div style="text-align: center;"><input type="submit" name="submit" value="送信" /></div>
+    </form>
+  </div>
+
+  <script src="../Public/js/user_form.js"></script>
+</body>
+</html>
