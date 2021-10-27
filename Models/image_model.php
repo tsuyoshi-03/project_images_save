@@ -11,3 +11,11 @@ function imageSave($file_1_name, $file_1_path, $file_2_name, $file_2_path){
   $stmt->bindParam(':file_2_path', $file_2_path, PDO::PARAM_STR);
   $stmt->execute();
 }
+
+function get_file_path(){
+  $sql = "SELECT file_1_path, file_2_path FROM images";
+  $stmt = $GLOBALS['pdo'] -> query($sql);
+  $stmt->execute();
+  $files = $stmt -> fetchall();
+  return $files;
+}
