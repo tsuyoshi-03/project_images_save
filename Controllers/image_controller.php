@@ -1,4 +1,6 @@
 <?php
+require_once("../Models/image_model.php");
+
 //画像１関連情報の取得
 $file_1 = $_FILES['image_1'];
 $file_1_name = basename($file_1['name']);
@@ -38,8 +40,10 @@ function fileExtCheck($file_ext){
 function uploadFile($file_tmp_path, $image_upload_dir, $file_name){
   //保存用ファイル名には日付をつける
   $save_file_name = date('YmdHis') . $file_name;
-  //一時ファイルから任意のディレクトリに保存
-  move_uploaded_file($file_tmp_path, $image_upload_dir . $save_file_name);
+  $save_file_path = $image_upload_dir . $save_file_name;
+  //一時ファイルパスから任意のパスへ
+  move_uploaded_file($file_tmp_path, $save_file_path);
+  return $save_file_path;
 }
 
 //画像がアップロードされていたら
@@ -48,8 +52,11 @@ if(is_uploaded_file($file_1_tmpPath) && is_uploaded_file($file_2_tmpPath)){
   if(fileExtCheck($file_1_ext) && fileExtCheck($file_2_ext)){
     //ファイルサイズが制限以下だったら
     if(fileSizeCheck($file_1_size, $file_1_err) && fileSizeCheck($file_2_size, $file_2_err)){
-      uploadFile($file_1_tmpPath, $image_1_upload_dir, $file_1_name);
-      uploadFile($file_2_tmpPath, $image_2_upload_dir, $file_2_name);
+      //各ディレクトリに保存
+      $save_file_path_1 = uploadFile($file_1_tmpPath, $image_1_upload_dir, $file_1_name);
+      $save_file_path_2 = uploadFile($file_2_tmpPath, $image_2_upload_dir, $file_2_name);
+      //DBに保存
+      imageSave($file_1_name, $save_file_path_1, $file_2_name, $save_file_path_2);
       echo 'ファイルがアップロードされました。';
       exit();
     }else{
