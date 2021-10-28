@@ -7,7 +7,7 @@ const submit = document.getElementById('submit');
 
 //プレビューサイズの調整
 let previewWidth = 600;
-let previewHeight = 300;
+let previewHeight = 400;
 
 submit.disabled = true;
 

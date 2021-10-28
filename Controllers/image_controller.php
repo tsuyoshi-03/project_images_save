@@ -15,8 +15,10 @@ $file_2_err = $file_2['error'];
 $file_2_size = $file_2['size'];
 
 //画像の保存先ディレクトリ
-$image_1_upload_dir = '/Applications/MAMP/htdocs/project_images_save/Images/images_1/';
-$image_2_upload_dir = '/Applications/MAMP/htdocs/project_images_save/Images/images_2/';
+//$image_1_upload_dir = '/Applications/MAMP/htdocs/project_images_save/Images/images_1/';
+$image_1_upload_dir = '../Images/images_1/';
+//$image_2_upload_dir = '/Applications/MAMP/htdocs/project_images_save/Images/images_2/';
+$image_2_upload_dir = '../Images/images_2/';
 
 //画像の拡張子を取得
 $file_1_ext = pathinfo($file_1_name, PATHINFO_EXTENSION);
@@ -57,17 +59,22 @@ if(is_uploaded_file($file_1_tmpPath) && is_uploaded_file($file_2_tmpPath)){
       $save_file_path_2 = uploadFile($file_2_tmpPath, $image_2_upload_dir, $file_2_name);
       //DBに保存
       imageSave($file_1_name, $save_file_path_1, $file_2_name, $save_file_path_2);
-      echo 'ファイルがアップロードされました。';
+      echo '<p>ファイルがアップロードされました。</p>';
+      echo '<p><a href="http://localhost/Views/user_form.html">戻る</a></p>';
+      echo '<p><a href="http://localhost/">トップページへ</a></p>';
       exit();
     }else{
-      echo 'ファイルサイズは1MB以下にしてください';
+      echo '<p>ファイルサイズは1MB以下にしてください</p>';
+      echo '<p><a href="http://localhost/Views/user_form.html">戻る</a></p>';
       exit();
     }
   }else{
-    echo '画像ファイルを添付してください';
+    echo '<p>画像ファイルを添付してください</p>';
+    echo '<p><a href="http://localhost/Views/user_form.html">戻る</a></p>';
     exit();
   }
 }else{
-  echo '選択されていないファイルがあります。';
+  echo '<p>選択されていないファイルがあります。</p>';
+  echo '<p><a href="http://localhost/Views/user_form.html">戻る</a></p>';
   exit();
 }

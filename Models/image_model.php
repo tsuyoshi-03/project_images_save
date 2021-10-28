@@ -19,3 +19,12 @@ function get_file_path(){
   $files = $stmt -> fetchall();
   return $files;
 }
+
+function get_filepath_from_search_id($search_id){
+  $sql = "SELECT file_1_path, file_2_path FROM images where id =(:id)";
+  $stmt = $GLOBALS['pdo'] -> prepare($sql);
+  $stmt->bindParam(':id', $search_id, PDO::PARAM_INT);
+  $stmt->execute();
+  $files = $stmt -> fetchall();
+  return $files;
+}
