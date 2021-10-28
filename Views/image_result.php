@@ -29,11 +29,11 @@ $files = get_filepath_from_search_id($search_id);
         <?php foreach($files as $file): ?>
           <div class="image_1">
             <p>画像１</p>
-            <div><img src="<?php echo $file['file_1_path']; ?>"></div>
+            <div><img src="<?php echo htmlspecialchars($file['file_1_path'], ENT_QUOTES, 'UTF-8'); ?>"></div>
           </div>
           <div class="image_2">
             <p>画像2</p>
-            <div><img src="<?php echo $file['file_2_path']; ?>"></div>
+            <div><img src="<?php echo htmlspecialchars($file['file_2_path'], ENT_QUOTES, 'UTF-8'); ?>"></div>
           </div>
         <?php endforeach; ?>
       <?php else: ?>
