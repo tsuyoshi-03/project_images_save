@@ -26,7 +26,7 @@ $file_2_ext = pathinfo($file_2_name, PATHINFO_EXTENSION);
 
 //ファイルサイズ制限を超えていなければtrue
 function fileSizeCheck($file_size, $file_err){
-  //1MBバイトに制限
+  //なんとなく1MBバイトに制限
   $limit_file_size = 1048576;
   return $file_size < $limit_file_size && $file_err  === 0;
 }
